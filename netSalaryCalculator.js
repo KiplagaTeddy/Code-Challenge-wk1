@@ -1,55 +1,89 @@
-//  Determining net salary using arithmetic, logical and conditional operators
+function calculateNssf(grossSalary) { 
+  // Data source:https://www.kra.go.ke/individual/calculate-tax/calculating-tax/paye
+// NSSF Deduction = 6% of Gross Salary 
+  
+// NSSF Calculations
+const nssfDeduction = (grossSalary * (0.06));
+  return nssfDeduction;
+}
+  
+// Calculate NHIF Deductions
+function calculateNhif(grossSalary) {
+if(grossSalary >= 0 && grossSalary <= 5999) {
+  return 150;
+}
+else if(grossSalary >= 6000 && grossSalary <= 7999) {
+  return 300;
+}
+else if(grossSalary>= 8000 && grossSalary <= 11999) {
+  return 400;
+}
+else if(grossSalary >= 12000 && grossSalary <= 14999) {
+  return  500;
+}
+else if(grossSalary >= 15000 && grossSalary <= 19999) { 
+  return 600;
+     
+}
+else if( grossSalary >= 20000 && grossSalary <= 24999) {
+  return 750;
+ 
+}
+else if(grossSalary >= 25000 && grossSalary <= 29999) {
+  return  850;
+}
+else if (grossSalary >= 30000 && grossSalary <=34999) {
+  return 900;
+     
+} else if(grossSalary >= 35000 && grossSalary <= 39000){ 
+  return  950;
+}
+else if(grossSalary >= 40000 && grossSalary <= 44999){
+  return 1000;
+}
+else if(grossSalary >= 45000 && grossSalary <= 49000) {
+  return 1100;
+}
+else if(grossSalary >= 50000 && grossSalary <= 59999) {
+  return 1200;
+}
+else if(grossSalary >= 60000 && grossSalary <= 69999) {
+  return  1300;
+}
+else if(grossSalary >= 70000 && grossSalary <= 79999){
+  return 1400
+}
+else if(grossSalary >= 80000 && grossSalary <= 89999) {
+  return 1500;
+}
+else if(grossSalary >= 90000 && grossSalary <= 99999) {
+  return 1600
+}
+else  {
+  return 1700;
+  }
+}
 
-// create three function names;
-
-// Calculating PAYE
-const calculatePayee = (monthlySalary) => {
-if (monthlySalary <= 24000) {
-    return monthlySalary * 0.1; // 10% tax rate for income <= 24,000
+// PAYE Calculations
+function calculatePaye(grossSalary) {
+if(grossSalary >= 0 && grossSalary <= 24000) {
+  let paye = grossSalary * (0.1) - 2400
+  return paye
 }
- else if (monthlySalary > 24000 && monthlySalary <= 32333) {
-    return (monthlySalary - 24000) * 0.25 + (24000 * 0.1); // Graduated tax for 24,001 - 32,333
+else if(grossSalary >= 24001 && grossSalary <= 32333) {
+paye = grossSalary * (0.25) - 2400;
+  return paye;
 }
- else if (monthlySalary > 32333 && monthlySalary <= 500000) {
-    return (monthlySalary - 32333) * 0.3 + (24000 * 0.1) + (32333 * 0.25); // Graduated tax for 32,334 - 500,000
+else if(grossSalary > 32333) {
+paye  = grossSalary * (0.3) - 2400;
+  return paye;
+  }
 }
-else if (monthlySalary > 500000 && monthlySalary <= 800000) {
-    return (monthlySalary - 500000) * 0.32 + (24000 * 0.1) + (500000 * 0.3); // Graduated tax for 500,001 - 800,000
+// Calculate and print Net Salary
+function calculateNetSalary(grossSalary) { 
+  let nssf = calculateNssf(grossSalary);
+  let nhif = calculateNhif(grossSalary);
+  let paye = calculatePaye(grossSalary);
+  let netSalary = grossSalary - paye - nhif -nssf;
+  return (netSalary);
 }
-else {
-   return monthlySalary * 0.35; // 35% tax rate for income > 800,000
-}
-};
-  
-  // Determining NHIF Deduction
-  const calculateNhifDeduction = (grossPay) => {
-    if (grossPay <= 5999) {
-      return 150;
-    } else if (grossPay >= 6000 && grossPay <= 7999) {
-      return 300;
-    } else if (grossPay >= 8000 && grossPay <= 11999) {
-      return 400;
-    } else {
-      return Math.min(grossPay * 0.05, 1700); // 5% NHIF capped at 1,700
-    }
-  };
-  
-  // Calculating NSSF Deduction
-  const calculateNssfDeduction = (grossSalary) => {
-    if (grossSalary <= 6000) {
-      return grossSalary * 0.06; // 6% NSSF on gross salary <= 6,000
-    } else {
-      return 360; // Capped NSSF contribution of 360 per month
-    }
-  };
-  
-  // Calculating Net Salary (assuming you have calculated values)
-  const monthlySalary = 40000;
-  const grossPay = monthlySalary + calculatePayee(monthlySalary);
-  const nhifDeduction = calculateNhifDeduction(grossPay);
-  const nssfDeduction = calculateNssfDeduction(grossSalary);
-  
-  const netSalary = grossPay - nhifDeduction - nssfDeduction;
-  
-  return netSalary;
-  

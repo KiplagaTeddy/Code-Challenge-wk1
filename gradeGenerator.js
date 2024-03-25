@@ -1,6 +1,12 @@
-function calculateGrade() {
- // Get user to input marks
-let marks = prompt("Enter student marks (0-100): ");
+// prompt user to enter marks
+const { Console } = require("console");
+const readline= require ("readline");
+   const rl = readline.createInterface ({
+     input: process.stdin,
+     output: process.stdout
+   });
+
+function studentGrade(marks) {
 // Determine the grade using if-else statements
 let grade;
 if (marks >= 80) {
@@ -19,8 +25,14 @@ else {
     grade = "E";
     }
 // Display the grade
-return ("Your grade is:", grade);
+return (grade);
   }
-  
-  calculateGrade();
+
+// Call the function and display the grade
+rl.question("Enter student marks (Between 0 and 100):",(marks)=>{
+  const Grade = studentGrade(parseInt(marks));
+  console.log (`The student's grade is: ${Grade}`)
+  rl.close();
+});
+
   

@@ -1,10 +1,10 @@
 function speedDetector(speed) {
-// Allow speed less than 70
+// Check speed limit
 if (speed <= 70) {
     return ("Ok");
-}   
+}  else {
 // Calculate demerit points
-const points = Math.floor((speed - 70) / 5);   
+points=Math.floor((speed - 70) / 5)
 // Suspend license if points exceed 12
 if (points > 12) {
     return ("License suspended");
@@ -14,4 +14,4 @@ else {
     return ("Points:", points);
     }
 }
-   
+}
