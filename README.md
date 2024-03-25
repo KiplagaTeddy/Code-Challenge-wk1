@@ -30,16 +30,16 @@ This code calculates your net salary in Kenya using PAYE (Pay As You Earn), NHIF
 ## Project setup
 
 ## Functions
-# calculateNssf(grossSalary)
+### calculateNssf(grossSalary)
 This function calculates the NSSF (National Social Security Fund) deduction, which is 6% of the gross salary.
 
-# calculateNhif(grossSalary)
+### calculateNhif(grossSalary)
 This function calculates the NHIF (National Hospital Insurance Fund) deduction based on the provided gross salary. The NHIF deduction varies depending on the salary range.
 
-# calculatePaye(grossSalary)
+### calculatePaye(grossSalary)
 This function calculates the PAYE (Pay As You Earn) tax deduction based on the provided gross salary. The PAYE deduction is calculated according to the tax brackets provided in the Kenya Revenue Authority (KRA) website.
 
-# calculateNetSalary(grossSalary)
+### calculateNetSalary(grossSalary)
 This function calculates the net salary by subtracting the PAYE, NHIF, and NSSF deductions from the gross salary.
 
  ## License
